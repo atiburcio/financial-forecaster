@@ -19,10 +19,14 @@ A Streamlit-based web application for financial time series forecasting using Me
    cd financial-forecaster
    ```
 
-2. Create and activate a virtual environment:
+2. Create and activate a virtual environment with Python 3.11:
    ```bash
-   python -m venv venv
+   # Make sure you have Python 3.11 installed
+   python3.11 -m venv venv
    source venv/bin/activate  # On Windows: venv\Scripts\activate
+   
+   # Verify Python version
+   python --version  # Should show Python 3.11.x
    ```
 
 3. Install dependencies:
@@ -36,6 +40,8 @@ A Streamlit-based web application for financial time series forecasting using Me
    ```
 
 ## ☁️ Deployment to Streamlit Cloud
+
+This app requires Python 3.11. When deploying to Streamlit Cloud, make sure to select Python 3.11 in the advanced settings.
 
 Deploy your own instance of this app in just a few clicks:
 
