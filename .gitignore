@@ -5,25 +5,24 @@ __pycache__/
 *.so
 .Python
 build/
-develop-eggs/
 dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
 
 # Virtual Environment
-venv/
-env/
-ENV/
+venv*/
+env*/
+ENV*/
+.venv*/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Streamlit
+.streamlit/secrets.toml
 
 # IDE
 .idea/
@@ -43,9 +42,6 @@ ENV/
 *.sql
 *.sqlite
 
-# Environment variables
-.env
-
 # Jupyter Notebook
 .ipynb_checkpoints
 
@@ -58,15 +54,6 @@ ENV/
 ehthumbs.db
 Thumbs.db
 
-# Local development
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Streamlit
-.streamlit/
-
 # Data directory
-data/
+data/*
 !data/README.md

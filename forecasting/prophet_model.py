@@ -1,9 +1,8 @@
 from prophet import Prophet
 import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import dates as mdates
-from typing import Tuple, Dict, Any
+from typing import Tuple
 
 def prepare_data(df: pd.DataFrame, date_col: str, value_col: str) -> pd.DataFrame:
     """
@@ -82,22 +81,37 @@ def plot_forecast(model, forecast: pd.DataFrame, df: pd.DataFrame = None) -> plt
     Returns:
         matplotlib.figure.Figure: The figure object
     """
-    fig = model.plot(forecast, uncertainty=True)
+    # Create figure and axis
+    fig, ax = plt.subplots(figsize=(12, 6))
     
-    # Add original data points if provided
+    # Plot the forecast
+    model.plot(forecast, ax=ax, xlabel='Date', ylabel='Value',
+               uncertainty=True, plot_cap=False)
+    
+    # Plot actual data points if provided
     if df is not None:
-        plt.scatter(df['ds'], df['y'], color='black', s=10, label='Actual')
+        ax.scatter(df['ds'], df['y'], color='black', s=10, label='Actual')
     
-    plt.title('Forecast')
-    plt.xlabel('Date')
-    plt.ylabel('Value')
-    plt.legend()
-    plt.grid(True, alpha=0.3)
+    # Customize the plot
+    ax.set_title('Forecast')
+    ax.grid(True, alpha=0.3)
     
     # Format x-axis
-    plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))
-    plt.gca().xaxis.set_major_locator(mdates.MonthLocator(interval=6))
+    ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))
+    ax.xaxis.set_major_locator(mdates.MonthLocator(interval=6))
     plt.xticks(rotation=45)
+    
+    # Get handles and labels, then filter out duplicates
+    handles, labels = ax.get_legend_handles_labels()
+    unique = [(h, l) for i, (h, l) in enumerate(zip(handles, labels)) 
+              if l not in ('Observed', 'Actual')]
+    
+    # Add back only the 'Actual' label if we have it
+    if df is not None:
+        unique.append((handles[-1], 'Actual'))
+    
+    # Update legend
+    ax.legend(*zip(*unique) if unique else [])
     
     plt.tight_layout()
     return fig

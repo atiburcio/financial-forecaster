@@ -1,6 +1,6 @@
 # Financial Forecasting Assistant
 
-A Streamlit-based web application for financial time series forecasting using Meta's Prophet library. This tool is designed for non-technical finance professionals who need to generate quick and accurate forecasts from their time series data.
+A Streamlit-based web application for financial time series forecasting using Meta's Prophet library. This tool is designed for finance professionals who need to generate quick and accurate forecasts from their time series data.
 
 ## Features
 
@@ -11,7 +11,7 @@ A Streamlit-based web application for financial time series forecasting using Me
 - **Demo Mode**: Try the app with synthetic data before uploading your own
 - **Export Results**: Download forecast results as CSV
 
-## Installation
+## 🚀 Quick Start (Local Development)
 
 1. Clone this repository:
    ```bash
@@ -19,16 +19,43 @@ A Streamlit-based web application for financial time series forecasting using Me
    cd financial-forecaster
    ```
 
-2. Create and activate a virtual environment (recommended):
+2. Create and activate a virtual environment:
    ```bash
    python -m venv venv
-   source venv/bin/activate  # On Windows use: venv\Scripts\activate
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
    ```
 
-3. Install the required packages:
+3. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
+
+4. Run the app locally:
+   ```bash
+   streamlit run app.py
+   ```
+
+## ☁️ Deployment to Streamlit Cloud
+
+Deploy your own instance of this app in just a few clicks:
+
+[![Deploy to Streamlit Cloud](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/deploy?repository=yourusername/financial-forecaster)
+
+Or follow these steps:
+
+1. Push your code to a GitHub repository
+2. Go to [Streamlit Cloud](https://share.streamlit.io/)
+3. Click "New app"
+4. Select your repository and branch
+5. Set the main file to `app.py`
+6. Click "Deploy!"
+
+## 🎯 Usage
+
+1. **Upload Data**: Click "Browse files" to upload an Excel file with your time series data
+2. **Column Selection**: The app will try to automatically detect date and value columns
+3. **Run Forecast**: Click "Run Forecast" to generate predictions
+4. **Explore Results**: View the forecast plot, components, and download the results
 
 ## Usage
 
